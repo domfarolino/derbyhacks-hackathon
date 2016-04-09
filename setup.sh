@@ -13,5 +13,5 @@ fi
 . venv/bin/activate
 
 pip install Flask
-pip install peewee
-pip install pyyaml
+
+mysql-ctl start
