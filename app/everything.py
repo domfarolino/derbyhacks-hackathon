@@ -1,7 +1,16 @@
 import os
+
 # We need a bunch of Flask stuff
 from flask import Flask
-
+from flask import render_template
+from flask import redirect
+from flask import request
+from flask import json
+from flask import url_for
+from flask import g
+from flask import session
+from flask import jsonify
+from flask import send_from_directory
 ######################################################
 # SETUP
 ######################################################
@@ -9,5 +18,5 @@ from flask import Flask
 
 app = Flask(__name__)
 
-from api.config import load_config
-cfg = load_config('api/config.yaml')
+from app.config import load_config
+cfg = load_config('app/config.yaml')

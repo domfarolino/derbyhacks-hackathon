@@ -16,10 +16,12 @@ else:
 
 if os.getenv('PORT'):
   PORT = int(os.getenv('PORT'))
+  print PORT
 else:
   PORT = 8080
 
 print ("Running at http://{0}:{1}/".format(IP, PORT))
+
 
 #app.secret_key = skt['secret_key']
 app.tag = cfg['tag']

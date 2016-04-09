@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../variable-route/variable-route.component', '../home/home.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, variable_route_component_1, home_component_1;
     var AppComponent;
     return {
         setters:[
@@ -19,16 +19,24 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (variable_route_component_1_1) {
+                variable_route_component_1 = variable_route_component_1_1;
+            },
+            function (home_component_1_1) {
+                home_component_1 = home_component_1_1;
             }],
         execute: function() {
-            // import { LoginComponent } from '../login/login.component';
-            // import { HomeRootComponent } from '../home-root/home-root.component';
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(_router) {
+                    this._router = _router;
                     this.title = "DerbyHacks";
                 }
                 AppComponent.prototype.getCoolDataFromKyesAPI = function () {
                     this.title += " - You added to the text";
+                };
+                AppComponent.prototype.goToUniversity = function (university) {
+                    this._router.navigate(['Variable', { university: university }]);
                 };
                 AppComponent = __decorate([
                     core_1.Component({
@@ -37,8 +45,20 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                         styleUrls: ['src/app/app.component.css'],
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [router_1.ROUTER_PROVIDERS]
-                    }), 
-                    __metadata('design:paramtypes', [])
+                    }),
+                    router_1.RouteConfig([
+                        {
+                            path: '/',
+                            name: 'Home',
+                            component: home_component_1.HomeComponent
+                        },
+                        {
+                            path: '/:university',
+                            name: 'Variable',
+                            component: variable_route_component_1.VariableRouteComponent
+                        }
+                    ]), 
+                    __metadata('design:paramtypes', [router_1.Router])
                 ], AppComponent);
                 return AppComponent;
             }());
