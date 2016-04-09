@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hello World!"
+    return send_from_directory('index.html', '/api/static/')
 
 if __name__ == '__main__':
     app.run()
