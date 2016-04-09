@@ -1,2 +1,2 @@
 from everything import *
-import app.globalroutes
+from app import global_routes

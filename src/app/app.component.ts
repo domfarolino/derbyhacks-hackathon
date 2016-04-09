@@ -6,7 +6,7 @@ import { Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angula
 import { VariableRouteComponent } from '../variable-route/variable-route.component';
 import { HomeComponent } from '../home/home.component';
 
-@Component({
+@Component({ 
   selector: 'my-app',
   templateUrl: 'src/app/app.component.html',
   styleUrls: ['src/app/app.component.css'],
