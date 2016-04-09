@@ -1,8 +1,10 @@
 import { Component } from 'angular2/core';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import { Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
 // import { LoginComponent } from '../login/login.component';
 // import { HomeRootComponent } from '../home-root/home-root.component';
+import { VariableRouteComponent } from '../variable-route/variable-route.component';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'my-app',
@@ -26,12 +28,29 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 //   }
 // ])
 
+@RouteConfig([
+  {
+    path: '/',
+    name: 'Home',
+    component: HomeComponent
+  },
+  {
+    path: '/:university',
+    name: 'Variable',
+    component: VariableRouteComponent
+  }
+])
+
 export class AppComponent {
   title = "DerbyHacks";
-  constructor() {
+  constructor(private _router: Router) {
   }
   
   getCoolDataFromKyesAPI() {
     this.title += " - You added to the text";
+  }
+  
+  goToUniversity(university: string) {
+    this._router.navigate(['Variable', { university: university }]);
   }
 }

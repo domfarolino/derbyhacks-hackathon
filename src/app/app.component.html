@@ -1,2 +1,4 @@
 <h1>{{title}}</h1>
-<button (click)="getCoolDataFromKyesAPI()">Update data</button>
+<input type="text" #university>
+<button (click)="goToUniversity(university.value)">Update data</button>
+<router-outlet></router-outlet>
