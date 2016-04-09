@@ -2,7 +2,9 @@
   <head>
   <base href="/">
     <title>Derbyhacks</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no
+    
+    <link rel="stylesheet" href="src/assets/styles.css">
 
     <!-- 1. Load libraries -->
     <!-- IE required polyfills, in this exact order -->
@@ -28,15 +30,8 @@
           }
         }
       });
-      System.import('../../src/main').then(null, console.error.bind(console));
+      System.import('../src/main').then(null, console.error.bind(console));
     </script>
-    
-    <style>
-      html, body {
-        padding:0;
-        margin:0;
-      }
-    </style>
 
   </head>
 

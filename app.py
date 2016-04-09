@@ -1,7 +1,14 @@
 import os
-from api import app
+from app import *
+from app.config import load_config
 
-# Builds the server configuration
+
+# The path is relative to the top of the project.
+cfg = load_config('app/config.yaml')
+
+# Run with
+# $ IP=0.0.0.0 PORT=8080 python run.py
+# or similar
 if os.getenv('IP'):
   IP = os.getenv('IP')
 else:
@@ -12,6 +19,9 @@ if os.getenv('PORT'):
 else:
   PORT = 8080
 
-# Print statements go to your log file in production; to your console while developing
-print ("Running server at http://{0}:{1}/".format(IP, PORT))
-app.run(host = IP, port = PORT, debug = True, threaded = True)
+print ("Running at http://{0}:{1}/".format(IP, PORT))
+
+#app.secret_key = skt['secret_key']
+app.tag = cfg['tag']
+
+app.run(host = IP, port = PORT, debug = True, processes = 8)
