@@ -1,5 +1,5 @@
-from flask import Flask
 import os
+from api import app
 
 # Builds the server configuration
 if os.getenv('IP'):
