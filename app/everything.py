@@ -11,6 +11,10 @@ from flask import g
 from flask import session
 from flask import jsonify
 from flask import send_from_directory
+
+# Some Local Stuff we made
+from model_files.models import *
+
 ######################################################
 # SETUP
 ######################################################

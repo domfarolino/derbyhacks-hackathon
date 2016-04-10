@@ -12,6 +12,7 @@ fi
 pip install Flask
 pip install peewee
 pip install pyyaml
+pip install PyMySQL
 
 mysql-ctl start
 

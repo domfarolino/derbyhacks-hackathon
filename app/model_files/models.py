@@ -3,7 +3,7 @@ import os
 import datetime
 
 # Create a database
-from api.config import load_config
+from app.config import load_config
 
 ###
 #Removed when moving away from sqlite
@@ -21,7 +21,7 @@ class DynamicModel (Model):
 # DYNAMIC MODELS
 ######################################################
 
-class Univerisity(DynamicModel):
+class University (DynamicModel):
     uni_id         = PrimaryKeyField()
     uni_name       = CharField()
     emailtag       = CharField(unique = True)
@@ -47,7 +47,7 @@ class Course (DynamicModel):
     field_id      = ForeignKeyField(Field)
     
 class Professor_Course (DynamicModel):
-    p_to_c_       = PrimaryKeyField()
+    p_to_c_id     = PrimaryKeyField()
     cid           = ForeignKeyField(Course)
     uid           = ForeignKeyField(User)
     
@@ -61,6 +61,7 @@ class Question (DynamicModel):
 class Answer (DynamicModel):
     aid          = PrimaryKeyField()
     qid          = ForeignKeyField(Question)
+    answer       = TextField()
     date         = DateTimeField(default = datetime.datetime.now)
     uid          = ForeignKeyField(User)
     approval     = BooleanField()

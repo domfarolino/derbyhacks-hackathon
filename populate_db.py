@@ -2,12 +2,12 @@
 import os, sys, importlib
 
 #Import personally created files
-from api.model_files.models import *
-from api.config import *
-from api.everything import *
+from app.model_files.models import *
+from app.config import *
+from app.everything import *
 
 # Retreive the db path from the 
-conf = load_config('api/config.yaml')
+conf = load_config('app/config.yaml')
 
 # Drops all Values in the tables
 def drop_tables(table_lst):
@@ -40,21 +40,23 @@ def get_classes (db):
 # This empties the database tables
 class_lst = conf["models"]["dynamic"]
 drop_tables(get_classes("dynamic"))
+print "It passed here"
 
 # This uses Peewee to populate a table with all of the dynamic classes in config.yaml 
-dynamicDB.create_tables(get_classes('dynamic'))
+dynamicDB.create_tables(get_classes('dynamic'), safe=True)
 
 # Populate Chemical Table with dummy data.
-berea = Univerisity (
+berea = University (
   #We do not put in the primary id
   uni_name        = "Berea College",
   emailtag         = "berea"
   )
+  
 print "University Field Populated"
 berea.save()
 
 user1 = User(  
-  email      = "eykrevooh",
+  email      = "eykrevooh@berea.edu",
   pwrd       = "password",
   auth       = 0,
   f_name     = "Kye",
@@ -64,63 +66,49 @@ user1 = User(
 print "User table populated"
 user1.save()
 
+prof1 = User(
+  email      = "jadudm@berea.edu",
+  pwrd       = "password",
+  auth       = 2,
+  f_name     = "Matt",
+  l_name     = "Jadud",
+  uni_id     = berea.uni_id
+  )
+
 field1 = Field(
+    name       = "Computer Science",
     uni_id     = berea.uni_id
     )
 print "Field table populated"
 field1.save()
 
-build = Building(
-  name       = "Science Building",
-  num_floors = "4",
-  address    = "101 Chestnut St.",
-  )
-print "Building table populated"
-build.save()
+course1 = Course(
+    course_name = "CSC 226",
+    field_id    = field1.field_id
+    )
+print "Course table populated"
+course1.save()
 
-room = Room(
-  build_id   = build.build_id, #This makes the Building pID the value
-  floor_id   = floor.floor_id,
-  name       = "405",
-  )
-print "Room table populated"
-room.save()
+p_2_c1 = Professor_Course(
+    cid        = course1.cid,
+    uid        = prof1.uid
+    )
+print "Professor Mapping Made"
+p_2_c1.save()
 
-storage = Storage(
-  room_id       = room.room_id,
-  name          = "Flammable Cabinet",
-  flammable     = True,
-  health_hazard = False,
-  oxidizer      = False,
-  org_acid      = False,
-  inorg_acid    = False,
-  base          = False,
-  peroxide      = False,
-  pressure      = False,
-  )
-print "Storage table populated"
-storage.save()
+question1 = Question(
+    question   = "Why is the sky blue?",
+    uid        = user1.uid,
+    p_to_c     = p_2_c1.p_to_c_id
+    )
+print "Question was populated"
+question1.save()
 
-container = Container(
-  barcode_id         = "16020032",
-  chem_id            = chemical.chem_id,
-  #res_u_name         = user.username,
-  storage_id         = storage.storage_id,
-  size_unit          = "ounces",
-  size_quantity      = 12,
-  con_type           = "bottle",
-  manufacteror       = "Sigma Aldrich",
-  con_size           = "ounces",
-  con_quantity       = 24,
-  )
-print "Container table populated"
-container.save()
-
-history = History(
-  storage_id    = storage.storage_id,
-  #username      = user.username,
-  size_unit     = "ounces",
-  size_quantity = 18,
-  )
-print "History table populated"
-history.save()
+answer1 = Answer(
+    qid        = question1.qid,
+    answer     = "Because you worship Satan",
+    uid        = prof1.uid,
+    approval   = True
+    )
+print "The Answer was saved"
+answer1.save()

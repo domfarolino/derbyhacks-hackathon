@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../variable-route/variable-route.component', '../home/home.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', '@angular2-material/button', '../variable-route/variable-route.component', '../home/home.component'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(['angular2/core', 'angular2/router', '../variable-route/variable
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, variable_route_component_1, home_component_1;
+    var core_1, router_1, button_1, variable_route_component_1, home_component_1;
     var AppComponent;
     return {
         setters:[
@@ -18,6 +18,9 @@ System.register(['angular2/core', 'angular2/router', '../variable-route/variable
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (button_1_1) {
+                button_1 = button_1_1;
             },
             function (variable_route_component_1_1) {
                 variable_route_component_1 = variable_route_component_1_1;
@@ -32,9 +35,6 @@ System.register(['angular2/core', 'angular2/router', '../variable-route/variable
                     this._router = _router;
                     this.title = "DerbyHacks";
                 }
-                AppComponent.prototype.getCoolDataFromKyesAPI = function () {
-                    this.title += " - You added to the text";
-                };
                 AppComponent.prototype.goToUniversity = function (university) {
                     this._router.navigate(['Variable', { university: university }]);
                 };
@@ -43,22 +43,9 @@ System.register(['angular2/core', 'angular2/router', '../variable-route/variable
                         selector: 'my-app',
                         templateUrl: 'static/src/app/app.component.html',
                         styleUrls: ['static/src/app/app.component.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES],
+                        directives: [router_1.ROUTER_DIRECTIVES, button_1.MdButton],
                         providers: [router_1.ROUTER_PROVIDERS]
                     }),
-                    router_1.RouteConfig([
-                        {
-                            path: '/...',
-                            name: 'Home',
-                            component: HomeRootComponent,
-                            useAsDefault: true
-                        },
-                        {
-                            path: '/login',
-                            name: 'Login',
-                            component: LoginComponent
-                        }
-                    ]),
                     router_1.RouteConfig([
                         {
                             path: '/',
