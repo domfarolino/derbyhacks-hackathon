@@ -1,5 +1,14 @@
 # Changes made to this file require a service restart
 
 models:
+    dynamic:
+        - University
+        - User
+        - Field
+        - Course
+        - Professor_Course
+        - Question
+        - Answer
+
 
 tag: "derbyhacks"

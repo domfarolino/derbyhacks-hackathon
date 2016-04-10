@@ -1,6 +1,5 @@
-System.register(['angular2/core', 'angular2/router', '../variable-route/variable-route.component', '../home/home.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../variable-route/variable-route.component', '../home/home.component'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -27,6 +26,7 @@ System.register(['angular2/core', 'angular2/router', '../variable-route/variable
                 home_component_1 = home_component_1_1;
             }],
         execute: function() {
+            //import { LoginComponent } from '../login/login.component';
             AppComponent = (function () {
                 function AppComponent(_router) {
                     this._router = _router;
@@ -41,11 +41,24 @@ System.register(['angular2/core', 'angular2/router', '../variable-route/variable
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        templateUrl: 'src/app/app.component.html',
-                        styleUrls: ['src/app/app.component.css'],
+                        templateUrl: 'static/src/app/app.component.html',
+                        styleUrls: ['static/src/app/app.component.css'],
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [router_1.ROUTER_PROVIDERS]
                     }),
+                    router_1.RouteConfig([
+                        {
+                            path: '/...',
+                            name: 'Home',
+                            component: HomeRootComponent,
+                            useAsDefault: true
+                        },
+                        {
+                            path: '/login',
+                            name: 'Login',
+                            component: LoginComponent
+                        }
+                    ]),
                     router_1.RouteConfig([
                         {
                             path: '/',

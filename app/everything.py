@@ -16,7 +16,7 @@ from flask import send_from_directory
 ######################################################
 # Set up the Flask app
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 from app.config import load_config
 cfg = load_config('app/config.yaml')

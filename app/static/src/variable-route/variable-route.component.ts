@@ -3,7 +3,7 @@ import { RouteParams } from 'angular2/router';
 
 @Component({
   selector: 'variable-route',
-  templateUrl: 'src/variable-route/variable-route.component.html'
+  templateUrl: 'static/src/variable-route/variable-route.component.html'
 })
 
 export class VariableRouteComponent {

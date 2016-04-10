@@ -15,10 +15,10 @@ else:
   IP = '0.0.0.0'
 
 if os.getenv('PORT'):
-  PORT = int(os.getenv('PORT'))
+  PORT = 8081
   print PORT
 else:
-  PORT = 8080
+  PORT = 8081
 
 print ("Running at http://{0}:{1}/".format(IP, PORT))
 
