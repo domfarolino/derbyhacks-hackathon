@@ -13,6 +13,7 @@ pip install Flask
 pip install peewee
 pip install pyyaml
 pip install PyMySQL
+pip install Flask-Login
 
 mysql-ctl start
 

@@ -1,0 +1,17 @@
+<h1>Questions</h1>
+
+<md-card id="add-question">
+    <h2>Add A Question...</h2>
+   <form (ngSubmit)="onSubmit()" id="add-inputs">
+        <md-input [(ngModel)]="model.title" placeholder="Title" autocomplete="off"></md-input>
+        <md-card id="contents">
+            <textarea [(ngModel)]="model.questionTitle" placeholder="Start typing here..."></textarea>    
+        </md-card>
+        <div>
+            <button md-raised-button (click)="onSubmit()" type="submit">Submit</button>
+        </div>
+    </form>
+</md-card>
+<hr />
+<h3>All Questions</h3>
+<question *ngFor="#question of questions" (click)="navigateToQuestion(question.qid)" title="{{question.qtitle}}" question="{{question.question}}"></question>

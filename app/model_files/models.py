@@ -4,6 +4,7 @@ import datetime
 
 # Create a database
 from app.config import load_config
+from playhouse.shortcuts import model_to_dict, dict_to_model
 
 ###
 #Removed when moving away from sqlite
@@ -24,7 +25,7 @@ class DynamicModel (Model):
 class University (DynamicModel):
     uni_id         = PrimaryKeyField()
     uni_name       = CharField()
-    emailtag       = CharField(unique = True)
+    emailtag       = CharField()
     
 
 class User (DynamicModel):
@@ -53,6 +54,7 @@ class Professor_Course (DynamicModel):
     
 class Question (DynamicModel):
     qid           = PrimaryKeyField()
+    qtitle        = TextField()
     question      = TextField()
     date          = DateTimeField(default = datetime.datetime.now)
     uid           = ForeignKeyField(User)
@@ -64,4 +66,15 @@ class Answer (DynamicModel):
     answer       = TextField()
     date         = DateTimeField(default = datetime.datetime.now)
     uid          = ForeignKeyField(User)
-    approval     = BooleanField()
+    approval     = BooleanField(default = False)
+    
+    
+########################
+## Functions for working with Flask Modals
+########################
+"""
+def models_to_dicts(models):
+    list_dicts =[]
+    for model in models
+
+"""

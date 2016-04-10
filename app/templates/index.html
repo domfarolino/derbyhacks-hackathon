@@ -19,14 +19,44 @@
     <script src="../static/node_modules/angular2/bundles/angular2.dev.js"></script>
     <script src="../static/node_modules/angular2/bundles/router.dev.js"></script>
     <script src="../static/node_modules/angular2/bundles/http.dev.js"></script>
+    
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
 
     <!-- 2. Configure SystemJS -->
     <script>
       System.config({
+        map: {
+          "@angular2-material": "../static/node_modules/@angular2-material"
+        },
         packages: {        
           '../static/src/': {
             format: 'register',
             defaultExtension: 'js'
+          },
+          '@angular2-material/core': {
+            format: 'cjs',
+            defaultExtension: 'js',
+            main: 'core.js'
+          },
+          '@angular2-material/button': {
+            format: 'cjs',
+            defaultExtension: 'js',
+            main: 'button.js'
+          },
+          '@angular2-material/card': {
+            format: 'cjs',
+            defaultExtension: 'js',
+            main: 'card.js'
+          },
+          '@angular2-material/toolbar': {
+            format: 'cjs',
+            defaultExtension: 'js',
+            main: 'toolbar.js'
+          },
+          '@angular2-material/input': {
+            format: 'cjs',
+            defaultExtension: 'js',
+            main: 'input.js'
           }
         }
       });

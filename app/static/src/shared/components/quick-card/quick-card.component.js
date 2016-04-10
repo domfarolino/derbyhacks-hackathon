@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', '@angular2-material/card'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,29 +9,37 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var HomeComponent;
+    var core_1, card_1;
+    var QuickCardComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (card_1_1) {
+                card_1 = card_1_1;
             }],
         execute: function() {
-            HomeComponent = (function () {
-                function HomeComponent() {
-                    this.title = "You're home!!";
+            QuickCardComponent = (function () {
+                function QuickCardComponent() {
                 }
-                HomeComponent = __decorate([
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', String)
+                ], QuickCardComponent.prototype, "title", void 0);
+                QuickCardComponent = __decorate([
                     core_1.Component({
-                        selector: 'home',
-                        templateUrl: 'static/src/home/home.component.html'
+                        selector: 'quick-card',
+                        templateUrl: 'static/src/shared/components/quick-card/quick-card.component.html',
+                        styleUrls: ['static/src/shared/components/quick-card/quick-card.component.css'],
+                        directives: [card_1.MD_CARD_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], HomeComponent);
-                return HomeComponent;
+                ], QuickCardComponent);
+                return QuickCardComponent;
             }());
-            exports_1("HomeComponent", HomeComponent);
+            exports_1("QuickCardComponent", QuickCardComponent);
         }
     }
 });
-//# sourceMappingURL=home.component.js.map
+//# sourceMappingURL=quick-card.component.js.map

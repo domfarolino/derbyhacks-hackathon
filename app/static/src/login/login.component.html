@@ -1,0 +1,9 @@
+<h1>Login</h1>
+
+<md-card>
+    <form (ngSubmit)="onSubmit()">
+        <md-input placeholder="Email" type="text" [(ngModel)]="model.email" ngControl="email" autocomplete="off" required #email></md-input>
+        <md-input placeholder="Password" type="password" [(ngModel)]="model.password" ngControl="password" autocomplete="off" required #password></md-input>
+        <button md-raised-button type="submit" [disabled] = "model.email == '' || model.password == ''">Login</button>
+    </form>
+</md-card>

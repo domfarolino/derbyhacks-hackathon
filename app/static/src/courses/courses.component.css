@@ -1,0 +1,15 @@
+md-card {
+    vertical-align: middle;
+    width: 75px;
+    height: 75px;
+    margin: 50px;
+    line-height: 75px;
+    display: inline-block;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 32px;
+    letter-spacing: 4px;
+}

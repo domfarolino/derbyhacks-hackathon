@@ -1,0 +1,26 @@
+<h1>Answers</h1>
+<div *ngIf="question && question.length">
+    <md-card class="question">
+        <p class="tags">{{question[0].qid.uid.f_name}} {{question[0].qid.uid.l_name}} | {{question[0].qid.uid.email}}</p>
+        <h3>{{question[0].qid.qtitle}}</h3>
+        <p>{{question[0].qid.question}}</p>
+    </md-card>
+    
+    <md-card id="add-answer">
+        <h2>Answer This Question</h2>
+            <md-card id="contents">
+                <textarea [(ngModel)]="model.answer" placeholder="Start typing here..."></textarea>    
+            </md-card>
+            <div>
+                <button md-raised-button (click)="onSubmit()">Submit</button>
+            </div>
+    </md-card>
+    <hr />
+    <h3>All Answers</h3>
+    
+    <md-card id="add-answer" *ngFor="#answer of question">
+        <h2>{{answer.uid.f_name}} {{answer.uid.l_name}}</h2>
+        <p>{{answer.answer}}</p>
+    </md-card>
+
+</div>

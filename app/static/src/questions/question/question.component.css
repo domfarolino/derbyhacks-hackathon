@@ -1,0 +1,28 @@
+md-card {
+    width: 70%;
+    margin: 50px auto;
+    display: block;
+    text-align: left;
+}
+
+.question {
+    border-top: 3px solid #ffd600;
+}
+
+.tags {
+    margin-right: auto;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.question:active {
+    background-color: #bdbdbd;
+    box-shadow: 0 0 0 0;
+    transition: all .15s ease;
+}
+
+md-card h3 {
+    color: #ad1457;
+    text-decoration: underline;
+    cursor: pointer;
+}

@@ -1,0 +1,3 @@
+<h1>{{university}} Fields of Study</h1>
+<quick-card *ngFor="#field of fields" (click)="navigateToCourses(field.field_id)" title="{{field.name}}"></quick-card>
+<h2>{{title}}</h2>

@@ -5,6 +5,7 @@ import os, sys, importlib
 from app.model_files.models import *
 from app.config import *
 from app.everything import *
+from data.all_universities import universities
 
 # Retreive the db path from the 
 conf = load_config('app/config.yaml')
@@ -18,7 +19,6 @@ def drop_tables(table_lst):
     except:
       print str(table) + " does not exist"
       
-  
 
 #Retreives all the class's from the module_name and returns them
 def class_from_name (module_name, class_name):
@@ -46,14 +46,11 @@ print "It passed here"
 dynamicDB.create_tables(get_classes('dynamic'), safe=True)
 
 # Populate Chemical Table with dummy data.
-berea = University (
-  #We do not put in the primary id
-  uni_name        = "Berea College",
-  emailtag         = "berea"
-  )
-  
+
+for university in universities:
+  uni = University(uni_name=university["name"], emailtag=university["domain"])
+  uni.save()
 print "University Field Populated"
-berea.save()
 
 user1 = User(  
   email      = "eykrevooh@berea.edu",
@@ -61,7 +58,7 @@ user1 = User(
   auth       = 0,
   f_name     = "Kye",
   l_name     = "Hoover",
-  uni_id     = berea.uni_id
+  uni_id     = 71
   )
 print "User table populated"
 user1.save()
@@ -72,34 +69,116 @@ prof1 = User(
   auth       = 2,
   f_name     = "Matt",
   l_name     = "Jadud",
-  uni_id     = berea.uni_id
+  uni_id     = 71
   )
+print "User table populated"
+prof1.save()
 
 field1 = Field(
     name       = "Computer Science",
-    uni_id     = berea.uni_id
+    uni_id     = 71
+    )
+print "Field table populated"
+field1.save()
+
+field1 = Field(
+    name       = "Philosophy",
+    uni_id     = 71
+    )
+print "Field table populated"
+field1.save()
+
+field1 = Field(
+    name       = "Mathematics",
+    uni_id     = 71
+    )
+print "Field table populated"
+field1.save()
+
+field1 = Field(
+    name       = "Chemistry",
+    uni_id     = 71
+    )
+print "Field table populated"
+field1.save()
+
+field1 = Field(
+    name       = "Economics",
+    uni_id     = 71
+    )
+print "Field table populated"
+field1.save()
+
+field1 = Field(
+    name       = "Nursing",
+    uni_id     = 71
+    )
+print "Field table populated"
+field1.save()
+
+field1 = Field(
+    name       = "History",
+    uni_id     = 71
     )
 print "Field table populated"
 field1.save()
 
 course1 = Course(
-    course_name = "CSC 226",
-    field_id    = field1.field_id
+    course_name = "CSC 101",
+    field_id    = 1
     )
 print "Course table populated"
 course1.save()
 
+course1 = Course(
+    course_name = "CSC 226",
+    field_id    = 1
+    )
+print "Course table populated"
+course1.save()
+
+course1 = Course(
+    course_name = "CSC 315",
+    field_id    = 1
+    )
+print "Course table populated"
+course1.save()
+
+course1 = Course(
+    course_name = "MAT 135",
+    field_id    = 3
+    )
+print "Course table populated"
+course1.save()
+
+course1 = Course(
+    course_name = "MAT 235",
+    field_id    = 3
+    )
+print "Course table populated"
+course1.save()
+
+course1 = Course(
+    course_name = "MAT 335",
+    field_id    = 3
+    )
+print "Course table populated"
+course1.save()
+
+
 p_2_c1 = Professor_Course(
-    cid        = course1.cid,
-    uid        = prof1.uid
+    cid        = 1,
+    uid        = 2
     )
 print "Professor Mapping Made"
 p_2_c1.save()
 
+
 question1 = Question(
-    question   = "Why is the sky blue?",
-    uid        = user1.uid,
-    p_to_c     = p_2_c1.p_to_c_id
+    qtitle     = "What is a hackathon?",
+    question   = "It'd be really great if someone could explain what exactly is a hackathon? What do you do in it? Is it a team event? If yes, what are team sizes? I have absolutely no clue.",
+    uid        = 1,
+    p_to_c     = 1
     )
 print "Question was populated"
 question1.save()
@@ -112,3 +191,4 @@ answer1 = Answer(
     )
 print "The Answer was saved"
 answer1.save()
+

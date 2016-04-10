@@ -1,0 +1,11 @@
+<h1>Registration</h1>
+<md-card>
+    <form (ngSubmit)="onSubmit()">
+        <md-input placeholder="First" [(ngModel)]="model.firstname" ngControl="first" autocomplete="off" required #firstname></md-input>
+        <md-input placeholder="Last" [(ngModel)]="model.lastname" ngControl="last" autocomplete="off" required #lastname></md-input>
+        <md-input placeholder="example@university.edu" [(ngModel)]="model.email" ngControl="email" autocomplete="off" required #email></md-input>
+        <md-input placeholder="Password" type="password" [(ngModel)]="model.password" ngControl="password" autocomplete="off" required #password></md-input>
+        <md-input placeholder="Confirm Password" type="password" ngControl="confirm" autocomplete="off" required #confirmPassword></md-input>
+        <button md-raised-button type="submit" [disabled] = "model.firstname == '' || model.lastname == '' || model.email == '' || model.password == '' || password.value != confirmPassword.value">Submit</button>
+    </form>
+</md-card>

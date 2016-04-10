@@ -1,0 +1,24 @@
+md-card {
+    width: 70%;
+    margin: 50px;
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+md-card:active {
+    background-color: #bdbdbd;
+    box-shadow: 0 0 0 0;
+    transition: all .15s ease;
+}
+
+md-card div {
+    display: flex;
+    align-items: center;
+}
+md-card p {
+    font-size: 24px;
+    margin-left: auto;
+    margin-right: auto;
+}

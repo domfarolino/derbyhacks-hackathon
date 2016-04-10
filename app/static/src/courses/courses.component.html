@@ -1,0 +1,2 @@
+<h1>Courses</h1>
+<quick-card *ngFor="#course of courses" (click)="navigateToQuestions(course.cid)" title="{{course.course_name}}"></quick-card>
